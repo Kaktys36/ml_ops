@@ -17,18 +17,18 @@ python3 -m venv "$BUILD_DIR/venv" || { echo "Ошибка при создани�
 
 source "$BUILD_DIR/venv/bin/activate" || { echo "Ошибка при активации виртуального окружения."; exit 1; }
 
-pip install -r "$BUILD_DIR/lab2/requirements.txt" || { echo "Ошибка при установке зависимостей."; exit 1; }
+pip install -r "$BUILD_DIR/2/requirements.txt" || { echo "Ошибка при установке зависимостей."; exit 1; }
 
-cd "$BUILD_DIR/lab2/src" || { echo "Не удалось перейти в каталог src"; exit 1; }
+cd "$BUILD_DIR/2/src" || { echo "Не удалось перейти в каталог src"; exit 1; }
 
 echo "Запуск создания данных"
-python data_creation.py || { echo "Ошибка при выполнении data_creation.py"; exit 1; }
+python new_data.py || { echo "Ошибка при выполнении new_data.py"; exit 1; }
 
 echo "Запуск предобработки данных"
-python model_preprocessing.py || { echo "Ошибка при выполнении model_preprocessing.py"; exit 1; }
+python preprocess.py || { echo "Ошибка при выполнении preprocess.py"; exit 1; }
 
 echo "Запуск подготовки и обучения модели"
-python model_preparation.py || { echo "Ошибка при выполнении model_preparation.py"; exit 1; }
+python model_prep.py || { echo "Ошибка при выполнении model_prep.py"; exit 1; }
 
 echo "Запуск тестирования модели"
-python model_testing.py || { echo "Ошибка при выполнении model_testing.py"; exit 1; }
+python test_model.py || { echo "Ошибка при выполнении test_model.py"; exit 1; }
